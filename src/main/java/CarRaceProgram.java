@@ -34,6 +34,17 @@ public class CarRaceProgram {
             racingCars.add(car);
         }
 
+        for (int i = 1; i < 4; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(i);
+        }
+        System.out.println("Go!!!!!!!!!!!!");
+
+
         for (int secondsCounter = 1; secondsCounter <= NUM_SECONDS; secondsCounter++) {
             for (Runnable car : racingCars) {
                 executor.execute(car);
@@ -48,7 +59,7 @@ public class CarRaceProgram {
                     printIntermediaryResults();
                 }
 
-            } catch (InterruptedException  e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -58,7 +69,6 @@ public class CarRaceProgram {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         executor.shutdown();
     }
 
@@ -86,11 +96,10 @@ public class CarRaceProgram {
 
         System.out.println("Top 3 cars:");
 
-       for (String result: IntermediaryResultsCheckpoint.intermediaryResults) {
-                System.out.println(result);
-            }
+        for (String result : IntermediaryResultsCheckpoint.intermediaryResults) {
+            System.out.println(result);
         }
-
+    }
 
 
 }
