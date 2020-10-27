@@ -26,7 +26,7 @@ public class CarRaceProgram {
                 = new ArrayList<>();
         cyclicBarrier = new CyclicBarrier(NUM_CARS, new IntermediaryResultsCheckpoint());
         finalLatch = new CountDownLatch(NUM_SECONDS * NUM_CARS);
-        ExecutorService executor = Executors.newScheduledThreadPool(NUM_CARS);
+        ExecutorService executor = Executors.newFixedThreadPool(NUM_CARS);
 
 
         for (int i = 0; i < NUM_CARS; i++) {
