@@ -10,7 +10,6 @@ public class CarRaceProgram {
 
     public static CyclicBarrier cyclicBarrier;
     public static CountDownLatch intermediaryLatch;
-    public static CountDownLatch finalLatch;
 
     public static List<Car> cars
             = Collections.synchronizedList(new ArrayList<>());
@@ -25,7 +24,6 @@ public class CarRaceProgram {
         List<Runnable> racingCars
                 = new ArrayList<>();
         cyclicBarrier = new CyclicBarrier(NUM_CARS, new IntermediaryResultsCheckpoint());
-        finalLatch = new CountDownLatch(NUM_SECONDS * NUM_CARS);
         ExecutorService executor = Executors.newFixedThreadPool(NUM_CARS);
 
 
@@ -62,12 +60,6 @@ public class CarRaceProgram {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-
-        try {
-            finalLatch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
         executor.shutdown();
     }

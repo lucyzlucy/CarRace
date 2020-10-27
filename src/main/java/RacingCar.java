@@ -11,7 +11,6 @@ class RacingCar implements Runnable {
 
     @Override
     public void run() {
-
         generateCarSpeed();
 
         try {
@@ -21,8 +20,6 @@ class RacingCar implements Runnable {
         }
 
         recordCarResults();
-
-        CarRaceProgram.finalLatch.countDown();
     }
 
     private void generateCarSpeed() {
